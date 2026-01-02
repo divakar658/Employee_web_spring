@@ -5,11 +5,11 @@ import com.sun.jdi.Locatable;
 import java.time.LocalDate;
 
 public class EmployeeDto {
-    int id;
-    String name;
-    String email;
-    int age;
-    LocalDate date;
+    private int id;
+    private String name;
+    private String email;
+    private int age;
+    private LocalDate date;
     boolean isActive;
 
     public EmployeeDto(int id, String name, String email, int age, LocalDate date, boolean isActive) {
