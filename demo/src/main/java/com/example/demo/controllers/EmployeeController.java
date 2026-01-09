@@ -1,40 +1,33 @@
 package com.example.demo.controllers;
 
 import com.example.demo.dto.EmployeeDto;
-import com.example.demo.entities.EmployeeEntity;
-import com.example.demo.repositories.EmployeeRepository;
+import com.example.demo.services.EmployeeService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.util.List;
 
 @RestController
-@RequestMapping(path="/employees")
+@RequestMapping("/employees")
 public class EmployeeController {
-    private final EmployeeRepository employeeRepository;
 
-    public EmployeeController(EmployeeRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
+    private final EmployeeService employeeService;
+
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
 
-    @GetMapping("{employeeId}")
-    EmployeeEntity getEmployeeById(@PathVariable int employeeId)
-      {
-          return employeeRepository.findById(employeeId).orElse(null);
-      }
-      @GetMapping
-      public List<EmployeeEntity> getEmployees(@RequestParam(required = false) Integer age)
-      {
-          return employeeRepository.findAll();
-      }
-      @PostMapping
-      public EmployeeEntity createNewEmployee(@RequestBody EmployeeEntity inputEmployeeEntity)
-      {
-            return employeeRepository.save(inputEmployeeEntity);
-      }
+    @GetMapping("/{employeeId}")
+    public EmployeeDto getEmployee(@PathVariable int employeeId) {
+        return employeeService.getEmployeeById(employeeId);
+    }
 
+    @GetMapping
+    public List<EmployeeDto> getEmployees() {
+        return employeeService.getAllEmployees();
+    }
 
-
-
-
-
+    @PostMapping
+    public EmployeeDto createEmployee(@RequestBody EmployeeDto employeeDto) {
+        return employeeService.createEmployee(employeeDto);
+    }
 }

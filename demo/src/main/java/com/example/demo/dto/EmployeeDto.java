@@ -1,18 +1,23 @@
 package com.example.demo.dto;
 
 import com.sun.jdi.Locatable;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
-
+@Getter
+@Setter
+@NoArgsConstructor
 public class EmployeeDto {
-    private int id;
+    private Integer id;
     private String name;
     private String email;
     private int age;
     private LocalDate date;
     boolean isActive;
 
-    public EmployeeDto(int id, String name, String email, int age, LocalDate date, boolean isActive) {
+    public EmployeeDto(Integer id, String name, String email, int age, LocalDate date, boolean isActive) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -21,51 +26,4 @@ public class EmployeeDto {
         this.isActive = isActive;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean active) {
-        isActive = active;
-    }
 }
